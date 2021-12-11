@@ -8,8 +8,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'posts-board';
-
   faGithub = faGithub;
   faLinkedin = faLinkedin;
 }
