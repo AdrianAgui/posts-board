@@ -11,6 +11,7 @@ import { ComponentsModule } from './core/components/components.module';
 import { PagesModule } from './core/pages/pages.module';
 import { SearcherComponent } from './core/components/searcher/searcher.component';
 import { HomeComponent } from './core/pages/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,10 +22,10 @@ import { HomeComponent } from './core/pages/home/home.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-
     ComponentsModule,
     PagesModule,
     SharedModule,

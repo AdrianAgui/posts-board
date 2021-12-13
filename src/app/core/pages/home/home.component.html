@@ -1,5 +1,16 @@
-<app-searcher></app-searcher>
+<app-searcher (onFilterChange)="filterChange($event)"></app-searcher>
 
-<div class="posts">
-  TABLA
-</div>
+<ng-container class="posts">
+
+  <div class="posts__container">
+
+    <div class="posts__card" *ngFor="let post of postsView">
+      <div class="posts__card--content">
+        <div class="posts__card--content-title">{{post.title}} (user: {{post.userId}})</div>
+        <span class="posts__card--content-body">{{post.body}}</span>
+      </div>
+    </div>
+
+  </div>
+
+</ng-container>
