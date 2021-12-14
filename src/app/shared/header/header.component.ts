@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',

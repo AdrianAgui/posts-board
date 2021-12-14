@@ -1,11 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
+import { CreateComponent } from './core/modals/create/create.component';
+import { DetailComponent } from './core/modals/detail/detail.component';
+import { EditComponent } from './core/modals/edit/edit.component';
 import { HomeComponent } from './core/pages/home/home.component';
+import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {
+    path: 'details',
+    component: DetailComponent,
+    outlet: 'post',
+  },
+  {
+    path: 'create',
+    component: CreateComponent,
+    outlet: 'post',
+  },
+  {
+    path: 'edit',
+    component: EditComponent,
+    outlet: 'post',
+  },
+  { path: '', component: HomeComponent },
+  { path: 'posts', component: HomeComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

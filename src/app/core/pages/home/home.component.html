@@ -1,7 +1,7 @@
 <div class="searcher__bar">
 
-  <div class="posts__create">
-    <button class="button"><span class="button__text">Create</span></button>
+  <div (click)="openCreateModal()" class="posts__create">
+    <app-button [text]="Labels.Create"></app-button>
   </div>
 
 
@@ -20,14 +20,12 @@
 <div *ngIf="postsView.length > 0" class="posts">
 
   <div class="posts__container">
-
     <div class="posts__card" *ngFor="let post of postsView">
-      <div class="posts__card--content">
+      <div class="posts__card--content" (click)="openDetailsModal()">
         <div class="posts__card--content-title">{{post.title}} (user: {{post.userId}})</div>
         <span class="posts__card--content-body">{{post.body}}</span>
       </div>
     </div>
-
   </div>
 
 </div>

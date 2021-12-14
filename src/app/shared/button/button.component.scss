@@ -1,0 +1,27 @@
+.button {
+  background: rgb(114, 114, 114);
+  font-weight: 700;
+  padding: 0;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &__text {
+    font-size: 20px;
+  }
+}
+
+.button span {
+  display: block;
+  color: white;
+  background: #1976d2;
+  padding: 1rem 1.5rem;
+  border: 1px solid #000;
+  border-radius: 5px;
+  transform: translate3d(-4px, -4px, 0);
+  transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+.button:hover span {
+  background: #8594eb;
+  transform: translate3d(-8px, -8px, 0);
+}

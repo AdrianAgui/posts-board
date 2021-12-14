@@ -20,7 +20,6 @@ export class SearcherComponent implements OnInit {
   filterChange(event: any) {
     this.inputHasText = event.value !== '';
     this.onFilterChange.emit(event.value);
-    console.log(event.value);
   }
 
   focusInput() {

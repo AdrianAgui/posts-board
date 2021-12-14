@@ -12,6 +12,10 @@ import { PagesModule } from './core/pages/pages.module';
 import { SearcherComponent } from './core/components/searcher/searcher.component';
 import { HomeComponent } from './core/pages/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonComponent } from './shared/button/button.component';
+import { DetailComponent } from './core/modals/detail/detail.component';
+import { CreateComponent } from './core/modals/create/create.component';
+import { EditComponent } from './core/modals/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     HeaderComponent,
     SearcherComponent,
+    ButtonComponent,
+    DetailComponent,
+    CreateComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
