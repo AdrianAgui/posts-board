@@ -1,6 +1,23 @@
-<app-searcher (onFilterChange)="filterChange($event)"></app-searcher>
+<div class="searcher__bar">
 
-<ng-container class="posts">
+  <div class="posts__create">
+    <button class="button"><span class="button__text">Create</span></button>
+  </div>
+
+
+  <div class="posts__searcher">
+    <div class="posts__count">
+      <h2>Posts: {{ postsView.length }}</h2>
+    </div>
+
+    <app-searcher (onFilterChange)="filterChange($event)"></app-searcher>
+
+  </div>
+
+</div>
+
+
+<div *ngIf="postsView.length > 0" class="posts">
 
   <div class="posts__container">
 
@@ -13,4 +30,4 @@
 
   </div>
 
-</ng-container>
+</div>

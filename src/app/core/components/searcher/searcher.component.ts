@@ -9,6 +9,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 export class SearcherComponent implements OnInit {
   faSearch = faSearch;
 
+  inputHasText = false;
+
   @Output() onFilterChange = new EventEmitter<string>();
 
   constructor() {}
@@ -16,6 +18,7 @@ export class SearcherComponent implements OnInit {
   ngOnInit(): void {}
 
   filterChange(event: any) {
+    this.inputHasText = event.value !== '';
     this.onFilterChange.emit(event.value);
     console.log(event.value);
   }
