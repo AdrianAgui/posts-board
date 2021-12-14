@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from '../../interfaces/post.interface';
 import { PostsService } from '../../services/posts-service/posts.service';
-import { Post } from '../../entities/post.entity';
 
 @Component({
   selector: 'app-home',
@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
         post.title.includes(value) ||
         post.body.includes(value)
     );
+
     if (!value && this.postsView.length === 0) {
       this.postsView = this.posts;
     }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Post } from '../../entities/post.entity';
 import { ApiService } from '../api-service/api.service';
 import { Observable } from 'rxjs';
+import { Post } from '../../interfaces/post.interface';
 
 const getPostsEndpoint = 'https://jsonplaceholder.typicode.com/posts';
 
