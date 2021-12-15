@@ -6,7 +6,7 @@ import { EditComponent } from './core/modals/edit/edit.component';
 import { HomeComponent } from './core/pages/home/home.component';
 import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
 
-const routes: Routes = [
+const modals: Routes = [
   {
     path: 'details',
     component: DetailComponent,
@@ -22,9 +22,13 @@ const routes: Routes = [
     component: EditComponent,
     outlet: 'post',
   },
+];
+
+const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'posts', component: HomeComponent },
   { path: '**', component: PageNotFoundComponent },
+  ...modals,
 ];
 
 @NgModule({
