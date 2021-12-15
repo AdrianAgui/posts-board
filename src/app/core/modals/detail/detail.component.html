@@ -1,5 +1,8 @@
-<div class="details-modal">
+<div class="modal details-modal" (keyup.enter)="close()">
   <button (click)="close()" class="close">✖</button>
   <p>Aquí va un texto.</p>
   <!-- <button class="accept">xxx!</button> -->
 </div>
+
+
+<div class="backdrop"></div>

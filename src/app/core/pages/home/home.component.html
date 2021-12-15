@@ -1,31 +1,36 @@
-<div class="searcher__bar">
+<div style="overflow-y: hidden;">
 
-  <div (click)="openCreateModal()" class="posts__create">
-    <app-button [text]="Labels.Create"></app-button>
-  </div>
+  <div class="searcher__bar">
 
-
-  <div class="posts__searcher">
-    <div class="posts__count">
-      <h2>Posts: {{ postsView.length }}</h2>
+    <div (click)="openCreateModal()" class="posts__create">
+      <app-button [text]="Labels.Create"></app-button>
     </div>
 
-    <app-searcher (onFilterChange)="filterChange($event)"></app-searcher>
+
+    <div class="posts__searcher">
+      <div class="posts__count">
+        <h2>Posts: {{ postsView.length }}</h2>
+      </div>
+
+      <app-searcher (onFilterChange)="filterChange($event)"></app-searcher>
+
+    </div>
 
   </div>
 
-</div>
 
+  <div *ngIf="postsView.length > 0" class="posts">
 
-<div *ngIf="postsView.length > 0" class="posts">
-
-  <div class="posts__container">
-    <div class="posts__card" *ngFor="let post of postsView">
-      <div class="posts__card--content" (click)="openDetailsModal()">
-        <div class="posts__card--content-title">{{post.title}} (user: {{post.userId}})</div>
-        <span class="posts__card--content-body">{{post.body}}</span>
+    <div class="posts__container">
+      <div class="posts__card" *ngFor="let post of postsView">
+        <div class="posts__card--content" (click)="openDetailsModal()">
+          <div class="posts__card--content-title">{{post.title}} (user: {{post.userId}})</div>
+          <span class="posts__card--content-body">{{post.body}}</span>
+        </div>
       </div>
     </div>
+
   </div>
+
 
 </div>
