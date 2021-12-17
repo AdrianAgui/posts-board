@@ -1,8 +1,24 @@
-<div class="modal details-modal" (keyup.enter)="close()">
-  <button (click)="close()" class="close">✖</button>
-  <p>Aquí va un texto.</p>
-  <!-- <button class="accept">xxx!</button> -->
-</div>
+<div class="modal details-modal">
 
+  <div class="details-modal__closebar">
+    <button (click)="close()" class="close">✖</button>
+  </div>
+
+  <div class="details-modal__header">
+    <div class="details-modal__header--title">{{ post?.title }}</div>
+  </div>
+
+  <div class="details-modal__content">
+    <p>
+      {{ post?.body }}
+    </p>
+  </div>
+
+  <div class="details-modal__footer">
+    <span>
+      posted by: <b>@{{ userName }}</b>
+    </span>
+  </div>
+</div>
 
 <div class="backdrop"></div>

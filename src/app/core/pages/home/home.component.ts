@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Labels } from '../../enum/labels';
 import { Post } from '../../interfaces/post.interface';
-import { PostsService } from '../../services/posts-service/posts.service';
+import { PostsService } from '../../services/posts/posts.service';
 import { Router } from '@angular/router';
+import { UsersService } from '../../services/users/users.service';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +16,15 @@ export class HomeComponent implements OnInit {
   posts: Post[] = [];
   postsView: Post[] = [];
 
-  constructor(private postsService: PostsService, private router: Router) {}
+  constructor(
+    private postsService: PostsService,
+    private usersService: UsersService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getPosts();
+    this.getUsers();
   }
 
   getPosts() {
@@ -26,6 +32,10 @@ export class HomeComponent implements OnInit {
       this.posts = posts;
       this.postsView = posts;
     });
+  }
+
+  getUsers() {
+    this.usersService.get().subscribe();
   }
 
   filterChange(value: string) {
@@ -45,7 +55,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate([{ outlets: { post: ['create'] } }]);
   }
 
-  openDetailsModal() {
-    this.router.navigate([{ outlets: { post: ['details'] } }]);
+  openDetailsModal(postId: number) {
+    this.router.navigate([{ outlets: { post: ['details', postId] } }]);
   }
 }

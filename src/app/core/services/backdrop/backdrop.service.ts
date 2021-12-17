@@ -8,10 +8,10 @@ export class BackdropService {
   constructor(@Inject(DOCUMENT) private document: Document) {}
 
   enable() {
-    this.document.body.classList.add('backdrop');
+    this.document.body.classList.add('overflow-hidden');
   }
 
   disable() {
-    this.document.body.classList.remove('backdrop');
+    this.document.body.classList.remove('overflow-hidden');
   }
 }

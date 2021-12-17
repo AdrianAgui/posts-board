@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BackdropService } from '../../services/backdrop/backdrop.service';
 
 @Component({
   selector: 'app-edit',
@@ -8,20 +7,11 @@ import { BackdropService } from '../../services/backdrop/backdrop.service';
   styleUrls: ['./edit.component.scss'],
 })
 export class EditComponent implements OnInit {
-  constructor(
-    private router: Router,
-    private backdropService: BackdropService
-  ) {}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    this.backdropService.enable();
-  }
+  ngOnInit(): void {}
 
   close() {
     this.router.navigate([{ outlets: { post: null } }]);
-  }
-
-  ngOnDestroy() {
-    this.backdropService.disable();
   }
 }

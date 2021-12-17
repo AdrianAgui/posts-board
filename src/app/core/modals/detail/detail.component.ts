@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { BackdropService } from '../../services/backdrop/backdrop.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Post } from '../../interfaces/post.interface';
+import { UsersService } from '../../services/users/users.service';
+import { PostsService } from './../../services/posts/posts.service';
 
 @Component({
   selector: 'app-detail',
@@ -8,9 +10,15 @@ import { BackdropService } from '../../services/backdrop/backdrop.service';
   styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent implements OnInit {
+  post: Post;
+  userName: string;
+  postId: number;
+
   constructor(
     private router: Router,
-    private backdropService: BackdropService
+    private route: ActivatedRoute,
+    private postsService: PostsService,
+    private usersService: UsersService
   ) {}
 
   @HostListener('document:keydown.escape', []) onKeydownEsc() {
@@ -18,14 +26,20 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.backdropService.enable();
+    this.route.params.subscribe((params) => {
+      this.postId = +params['postId'];
+      this.setPost(this.postId);
+    });
   }
 
   close() {
     this.router.navigate([{ outlets: { post: null } }]);
   }
 
-  ngOnDestroy() {
-    this.backdropService.disable();
+  private setPost(idPost: number) {
+    if (idPost) {
+      this.post = this.postsService.getById(idPost);
+      this.userName = this.usersService.getName(this.post.userId);
+    }
   }
 }

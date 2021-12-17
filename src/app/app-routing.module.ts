@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { InitGuard } from './core/guards/init.guard';
 import { CreateComponent } from './core/modals/create/create.component';
 import { DetailComponent } from './core/modals/detail/detail.component';
 import { EditComponent } from './core/modals/edit/edit.component';
@@ -8,7 +9,7 @@ import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-foun
 
 const modals: Routes = [
   {
-    path: 'details',
+    path: 'details/:postId',
     component: DetailComponent,
     outlet: 'post',
   },
@@ -25,8 +26,13 @@ const modals: Routes = [
 ];
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'posts', component: HomeComponent },
+  { path: '', redirectTo: '/posts', pathMatch: 'full' },
+  {
+    path: 'posts',
+    component: HomeComponent,
+    canActivate: [InitGuard],
+    children: [...modals],
+  },
   { path: '**', component: PageNotFoundComponent },
   ...modals,
 ];

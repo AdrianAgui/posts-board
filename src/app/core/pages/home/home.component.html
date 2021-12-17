@@ -1,11 +1,9 @@
-<div style="overflow-y: hidden;">
+<div>
 
   <div class="searcher__bar">
-
     <div (click)="openCreateModal()" class="posts__create">
       <app-button [text]="Labels.Create"></app-button>
     </div>
-
 
     <div class="posts__searcher">
       <div class="posts__count">
@@ -13,24 +11,18 @@
       </div>
 
       <app-searcher (onFilterChange)="filterChange($event)"></app-searcher>
-
     </div>
-
   </div>
 
-
   <div *ngIf="postsView.length > 0" class="posts">
-
     <div class="posts__container">
       <div class="posts__card" *ngFor="let post of postsView">
-        <div class="posts__card--content" (click)="openDetailsModal()">
-          <div class="posts__card--content-title">{{post.title}} (user: {{post.userId}})</div>
+        <div class="posts__card--content" (click)="openDetailsModal(post.id)">
+          <div class="posts__card--content-title">{{post.title}}</div>
           <span class="posts__card--content-body">{{post.body}}</span>
         </div>
       </div>
     </div>
-
   </div>
-
 
 </div>
