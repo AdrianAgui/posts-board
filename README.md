@@ -1,6 +1,6 @@
 # posts-board
 
-Post board with CRUD functionalities that interact with the API [a link](https://jsonplaceholder.typicode.com/posts)
+Post board with CRUD functionalities that interact with the API [https://jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com)
 
 ## Build
 
