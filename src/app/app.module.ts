@@ -16,6 +16,7 @@ import { ButtonComponent } from './shared/button/button.component';
 import { DetailComponent } from './core/modals/detail/detail.component';
 import { CreateComponent } from './core/modals/create/create.component';
 import { EditComponent } from './core/modals/edit/edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { EditComponent } from './core/modals/edit/edit.component';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     FontAwesomeModule,
     ComponentsModule,
     PagesModule,

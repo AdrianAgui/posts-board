@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../../interfaces/post.interface';
+import { BackdropService } from '../../services/backdrop/backdrop.service';
 import { UsersService } from '../../services/users/users.service';
 import { PostsService } from './../../services/posts/posts.service';
 
@@ -18,7 +19,8 @@ export class DetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private postsService: PostsService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private backdropService: BackdropService
   ) {}
 
   @HostListener('document:keydown.escape', []) onKeydownEsc() {
@@ -29,11 +31,13 @@ export class DetailComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.postId = +params['postId'];
       this.setPost(this.postId);
+      this.backdropService.enable();
     });
   }
 
   close() {
     this.router.navigate([{ outlets: { post: null } }]);
+    this.backdropService.disable();
   }
 
   private setPost(idPost: number) {

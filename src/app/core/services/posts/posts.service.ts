@@ -10,27 +10,38 @@ const getCommentsEndpoint = 'https://jsonplaceholder.typicode.com/comments';
   providedIn: 'root',
 })
 export class PostsService {
-  list: Post[] = [];
+  private list: Post[] = [];
+
   postsRefreshed: Subject<boolean> = new Subject<boolean>();
 
   constructor(private apiService: ApiService) {}
 
   get() {
     return this.list.length > 0
-      ? of(this.list)
-      : (
-          this.apiService.get<Post[]>(getPostsEndpoint) as Observable<Post[]>
-        ).pipe(
-          map((posts) => (this.list = posts)),
-          tap(() => this.postsRefreshed.next(true))
-        );
+      ? this.getFromCache()
+      : this.getFromApi().pipe(map((posts) => (this.list = posts)));
+  }
+
+  create(post: Post) {
+    return this.apiService.post<Post>(
+      getPostsEndpoint,
+      post
+    ) as Observable<Post>;
   }
 
   getComments() {
-    this.apiService.get<any[]>(getCommentsEndpoint) as Observable<any[]>;
+    return this.apiService.get<any[]>(getCommentsEndpoint) as Observable<any[]>;
   }
 
   getById(id: number): Post {
     return this.list.find((post) => id === post.id)!;
+  }
+
+  private getFromCache() {
+    return of(this.list);
+  }
+
+  private getFromApi() {
+    return this.apiService.get<Post[]>(getPostsEndpoint) as Observable<Post[]>;
   }
 }
