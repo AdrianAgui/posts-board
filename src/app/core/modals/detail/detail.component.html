@@ -4,21 +4,26 @@
     <button (click)="close()" class="close">✖</button>
   </div>
 
-  <div class="details-modal__header">
-    <div class="details-modal__header--title">{{ post?.title }}</div>
+  <div class="details-modal__container-data">
+
+    <div class="details-modal__header">
+      <div class="details-modal__header--title">{{ post?.title }}</div>
+    </div>
+
+    <div class="details-modal__content">
+      <p>
+        {{ post?.body }}
+      </p>
+    </div>
+
+    <div class="details-modal__footer">
+      <span>
+        posted by: <b>@{{ userName }}</b>
+      </span>
+    </div>
   </div>
 
-  <div class="details-modal__content">
-    <p>
-      {{ post?.body }}
-    </p>
-  </div>
 
-  <div class="details-modal__footer">
-    <span>
-      posted by: <b>@{{ userName }}</b>
-    </span>
-  </div>
 </div>
 
 <div class="backdrop"></div>

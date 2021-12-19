@@ -7,15 +7,46 @@
   color: #000;
   border-radius: 20px;
   padding: 30px;
-  position: fixed;
-  top: 40%;
+
+  position: absolute;
   left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
+
+  @media screen and (max-width: 768px) {
+    width: auto;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    border-radius: 0px;
+    transform: none;
+  }
 
   &__closebar {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+
+
+    .close {
+      font-size: 20px;
+      color: #c0c5cb;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      @media screen and (max-width: 768px) {
+        font-size: 30px;
+      }
+    }
+
+  }
+
+  &__container-data {
+    @media screen and (max-width: 768px) {
+      margin-top: 5rem;
+    }
   }
 
   &__header {
@@ -35,15 +66,6 @@
     display: flex;
     justify-content: flex-end;
     margin-right: 1rem;
-  }
-
-  button.close {
-    width: 30px;
-    font-size: 20px;
-    color: #c0c5cb;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
   }
 
   p {

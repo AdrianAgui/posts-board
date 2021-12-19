@@ -25,11 +25,14 @@
 
     @media screen and (max-width: 767px) {
       flex-direction: column;
+      margin: 0;
     }
   }
 
   &__count {
-    margin-right: 2rem;
+    h2 {
+      white-space: nowrap;
+    }
   }
 
   &__card {
