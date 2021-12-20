@@ -19,14 +19,19 @@ const modals: Routes = [
     outlet: 'post',
   },
   {
-    path: 'edit',
+    path: 'edit/:postId',
     component: EditComponent,
     outlet: 'post',
   },
 ];
 
 const routes: Routes = [
-  { path: '', redirectTo: '/posts', pathMatch: 'full' },
+  {
+    path: '',
+    component: HomeComponent,
+    canActivate: [InitGuard],
+    children: [...modals],
+  },
   {
     path: 'posts',
     component: HomeComponent,
