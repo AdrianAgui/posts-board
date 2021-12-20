@@ -17,6 +17,7 @@ import { DetailComponent } from './core/modals/detail/detail.component';
 import { CreateComponent } from './core/modals/create/create.component';
 import { EditComponent } from './core/modals/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DetailComponent,
     CreateComponent,
     EditComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

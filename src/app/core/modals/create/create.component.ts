@@ -11,6 +11,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { faBroom } from '@fortawesome/free-solid-svg-icons';
+import { LoaderService } from './../../services/loader/loader.service';
 
 @Component({
   selector: 'app-create',
@@ -35,7 +36,8 @@ export class CreateComponent {
     private router: Router,
     private postsService: PostsService,
     private backdropService: BackdropService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private loader: LoaderService
   ) {}
 
   @HostListener('document:keydown.escape', []) onKeydownEsc() {
@@ -57,9 +59,19 @@ export class CreateComponent {
   }
 
   createPost() {
-    this.postsService
-      .create({ title: 'prueba', body: 'esto es una prueba' } as Post)
-      .subscribe(() => {});
+    this.loader.display();
+    if (this.form.valid) {
+      this.postsService
+        .create({
+          title: this.f['title'].value,
+          body: this.f['body'].value,
+        } as Post)
+        .subscribe(() => {
+          console.log('finish sub');
+          this.close();
+          this.loader.hide();
+        });
+    }
   }
 
   reset(): void {
@@ -71,9 +83,11 @@ export class CreateComponent {
     this.form = this.formBuilder.group({
       title: [
         '',
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(48),
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(48),
+        ],
       ],
       body: [
         '',
