@@ -1,6 +1,7 @@
 .details-modal {
   &__container-data {
     @media screen and (max-width: 768px) {
+      padding: 2rem;
       margin-top: 5rem;
     }
   }
@@ -17,15 +18,15 @@
     }
   }
 
+  &__content {
+    margin: 2rem 0;
+    line-height: 1.5;
+  }
+
   &__footer {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     margin-right: 1rem;
-  }
-
-  p {
-    margin-bottom: 40px;
-    font-size: 18px;
   }
 }
