@@ -60,13 +60,15 @@ export class CreateComponent {
   }
 
   createPost() {
+    this.submitted = true;
+
     if (this.form.valid) {
       this.loader.display();
 
       this.postsService
         .create({
           title: this.f['title'].value,
-          body: this.f['body'].value,
+          body: this.f['body'].value.replace('\n', ''),
         } as Post)
         .subscribe(() => {
           this.close();
