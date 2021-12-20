@@ -4,6 +4,7 @@ import { Post } from '../../interfaces/post.interface';
 import { PostsService } from '../../services/posts/posts.service';
 import { Router } from '@angular/router';
 import { UsersService } from '../../services/users/users.service';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { UsersService } from '../../services/users/users.service';
 })
 export class HomeComponent implements OnInit {
   Labels = Labels;
+  faEdit = faEdit;
 
   posts: Post[] = [];
   postsView: Post[] = [];
@@ -57,5 +59,9 @@ export class HomeComponent implements OnInit {
 
   openDetailsModal(postId: number) {
     this.router.navigate([{ outlets: { post: ['details', postId] } }]);
+  }
+
+  openEditModal(postId: number) {
+    this.router.navigate([{ outlets: { post: ['edit', postId] } }]);
   }
 }

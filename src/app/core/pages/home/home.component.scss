@@ -30,6 +30,8 @@
   }
 
   &__count {
+    margin-top: 1rem;
+
     h2 {
       font-family: Caveat, Roboto;
       white-space: nowrap;
@@ -46,6 +48,10 @@
     margin: 1rem;
     overflow-y: auto;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     &--content {
       text-align: justify;
       color: black;
@@ -61,6 +67,14 @@
 
       &-body {
         font-size: 14px;
+      }
+    }
+
+    &--edit {
+      align-self: flex-end;
+
+      button {
+        border-radius: 15px 0 0 0
       }
     }
   }
