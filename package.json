@@ -12,7 +12,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "git checkout gh-pages && git merge origin/master && ng build --output-path docs --base-href ./"
+    "deploy": "git checkout gh-pages && git merge origin/master && git push --all && ng build --output-path docs --base-href ./"
   },
   "private": true,
   "dependencies": {
