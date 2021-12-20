@@ -25,11 +25,15 @@
 
     @media screen and (max-width: 767px) {
       flex-direction: column;
+      margin: 0;
     }
   }
 
   &__count {
-    margin-right: 2rem;
+    h2 {
+      font-family: Caveat, Roboto;
+      white-space: nowrap;
+    }
   }
 
   &__card {

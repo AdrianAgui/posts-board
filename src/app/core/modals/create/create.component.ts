@@ -10,6 +10,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { faBroom } from '@fortawesome/free-solid-svg-icons';
+import { LoaderService } from './../../services/loader/loader.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-create',
@@ -17,6 +20,8 @@ import {
   styleUrls: ['./create.component.scss'],
 })
 export class CreateComponent {
+  faBroom = faBroom;
+
   form: FormGroup = new FormGroup({
     fullname: new FormControl(''),
     username: new FormControl(''),
@@ -32,7 +37,8 @@ export class CreateComponent {
     private router: Router,
     private postsService: PostsService,
     private backdropService: BackdropService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private loader: LoaderService
   ) {}
 
   @HostListener('document:keydown.escape', []) onKeydownEsc() {
@@ -54,9 +60,19 @@ export class CreateComponent {
   }
 
   createPost() {
-    this.postsService
-      .create({ title: 'prueba', body: 'esto es una prueba' } as Post)
-      .subscribe(() => {});
+    if (this.form.valid) {
+      this.loader.display();
+
+      this.postsService
+        .create({
+          title: this.f['title'].value,
+          body: this.f['body'].value,
+        } as Post)
+        .subscribe(() => {
+          this.close();
+          this.loader.hide();
+        });
+    }
   }
 
   reset(): void {
@@ -66,26 +82,22 @@ export class CreateComponent {
 
   private initForm() {
     this.form = this.formBuilder.group({
-      fullname: ['', Validators.required],
-      username: [
+      title: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(48),
+        ],
+      ],
+      body: [
         '',
         [
           Validators.required,
           Validators.minLength(6),
-          Validators.maxLength(20),
+          Validators.maxLength(256),
         ],
       ],
-      email: ['', [Validators.required, Validators.email]],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(40),
-        ],
-      ],
-      confirmPassword: ['', Validators.required],
-      acceptTerms: [false, Validators.requiredTrue],
     });
   }
 }

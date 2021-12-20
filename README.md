@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `npm install` && `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.\
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.\
-Run `git checkout gh-pages` and then `ng build --output-path docs --base-href /posts-board/` for deploy app in [https://adrianagui.github.io/posts-board/](https://adrianagui.github.io/posts-board/)
+Run `npm run deploy` after update branch `master` for deploy branch `master` in [https://adrianagui.github.io/posts-board/](https://adrianagui.github.io/posts-board/) \
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ### Author
