@@ -12,6 +12,7 @@ import {
 } from '@angular/forms';
 import { faBroom } from '@fortawesome/free-solid-svg-icons';
 import { LoaderService } from './../../services/loader/loader.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-create',
@@ -59,15 +60,15 @@ export class CreateComponent {
   }
 
   createPost() {
-    this.loader.display();
     if (this.form.valid) {
+      this.loader.display();
+
       this.postsService
         .create({
           title: this.f['title'].value,
           body: this.f['body'].value,
         } as Post)
         .subscribe(() => {
-          console.log('finish sub');
           this.close();
           this.loader.hide();
         });

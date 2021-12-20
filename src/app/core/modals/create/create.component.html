@@ -3,7 +3,7 @@
     <button (click)="close()" class="close">✖</button>
   </div>
 
-  <div class="register-form">
+  <div class="form">
     <form [formGroup]="form" (ngSubmit)="createPost()">
 
       <div class="form-group">
@@ -31,11 +31,10 @@
       </div>
 
       <div class="form-buttons">
-        <fa-icon [icon]="faBroom"></fa-icon>
-        <button type="submit" class="accept">Post it!</button>
-        <button type="button" (click)="reset()" class="accept">
-          Reset
+        <button type="button" (click)="reset()" class="clean accept">
+          <fa-icon [icon]="faBroom"></fa-icon>
         </button>
+        <button type="submit" class="submit accept">Post it!</button>
       </div>
 
     </form>
