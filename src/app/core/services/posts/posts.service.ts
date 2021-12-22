@@ -14,7 +14,7 @@ const getCommentsEndpoint = (postId: number) =>
   providedIn: 'root',
 })
 export class PostsService {
-  private list: Post[] = [];
+  list: Post[] = [];
 
   postsRefreshed: Subject<boolean> = new Subject<boolean>();
 
@@ -31,7 +31,6 @@ export class PostsService {
   }
 
   update(post: Post) {
-    console.log(post);
     return this.apiService.put<Post>(putEndpoint(post.id), {
       title: post.title,
       body: post.body,
