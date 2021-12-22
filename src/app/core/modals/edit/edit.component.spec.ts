@@ -1,25 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { BackdropService } from '../../services/backdrop/backdrop.service';
+import { LoaderService } from '../../services/loader/loader.service';
+import { PostsService } from '../../services/posts/posts.service';
 
 import { EditComponent } from './edit.component';
 
 describe('EditComponent', () => {
-  let component: EditComponent;
-  let fixture: ComponentFixture<EditComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ EditComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(EditComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should be created', () => {
+    const comp = new EditComponent(
+      {} as Router,
+      {} as PostsService,
+      {} as BackdropService,
+      {} as FormBuilder,
+      {} as LoaderService,
+      {} as ActivatedRoute
+    );
+    expect(comp).toBeDefined();
   });
 });

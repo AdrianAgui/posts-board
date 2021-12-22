@@ -1,25 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CreateComponent } from './create.component';
+import { PostsService } from './../../services/posts/posts.service';
+import { BackdropService } from './../../services/backdrop/backdrop.service';
+import { FormBuilder } from '@angular/forms';
+import { LoaderService } from './../../services/loader/loader.service';
+import { Router } from '@angular/router';
 
 describe('CreateComponent', () => {
-  let component: CreateComponent;
-  let fixture: ComponentFixture<CreateComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CreateComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CreateComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should be created', () => {
+    const comp = new CreateComponent(
+      {} as Router,
+      {} as PostsService,
+      {} as BackdropService,
+      {} as FormBuilder,
+      {} as LoaderService
+    );
+    expect(comp).toBeDefined();
   });
 });

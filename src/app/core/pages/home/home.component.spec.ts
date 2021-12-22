@@ -1,25 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Router } from '@angular/router';
+import { PostsService } from '../../services/posts/posts.service';
+import { UsersService } from '../../services/users/users.service';
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should be created', () => {
+    const comp = new HomeComponent(
+      {} as PostsService,
+      {} as UsersService,
+      {} as Router
+    );
+    expect(comp).toBeDefined();
   });
 });

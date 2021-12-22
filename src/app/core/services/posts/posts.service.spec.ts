@@ -1,16 +1,27 @@
 import { TestBed } from '@angular/core/testing';
+import { ApiService } from '../api-service/api.service';
+import { PostsService } from './posts.service';
 
-import { ApiServiceService } from './api-service.service';
-
-describe('ApiServiceService', () => {
-  let service: ApiServiceService;
+describe('PostsService', () => {
+  let postsService: PostsService;
+  let apiServiceSpy: jasmine.SpyObj<ApiService>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(ApiServiceService);
+    const spy = jasmine.createSpyObj('ApiService', [
+      'get',
+      'getById',
+      'getName',
+    ]);
+
+    TestBed.configureTestingModule({
+      providers: [PostsService, { provide: ApiService, useValue: spy }],
+    });
+
+    postsService = TestBed.inject(PostsService);
+    apiServiceSpy = TestBed.inject(ApiService) as jasmine.SpyObj<ApiService>;
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(postsService).toBeTruthy();
   });
 });
