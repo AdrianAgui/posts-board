@@ -18,6 +18,7 @@ import { CreateComponent } from './core/modals/create/create.component';
 import { EditComponent } from './core/modals/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { PostComponent } from './core/components/post/post.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
     CreateComponent,
     EditComponent,
     SpinnerComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ import { Post } from '../../interfaces/post.interface';
 import { BackdropService } from '../../services/backdrop/backdrop.service';
 import { UsersService } from '../../services/users/users.service';
 import { PostsService } from './../../services/posts/posts.service';
+import { LoaderService } from './../../services/loader/loader.service';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-detail',
@@ -14,13 +16,17 @@ export class DetailComponent implements OnInit {
   post: Post;
   userName: string;
   postId: number;
+  comments: any;
+
+  faUser = faUser;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private postsService: PostsService,
     private usersService: UsersService,
-    private backdropService: BackdropService
+    private backdropService: BackdropService,
+    private loader: LoaderService
   ) {}
 
   @HostListener('document:keydown.escape', []) onKeydownEsc() {
@@ -30,8 +36,11 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.postId = +params['postId'];
-      this.setPost(this.postId);
-      this.backdropService.enable();
+      if (this.postId) {
+        this.setPost(this.postId);
+        this.setComments(this.postId);
+        this.backdropService.enable();
+      }
     });
   }
 
@@ -41,9 +50,15 @@ export class DetailComponent implements OnInit {
   }
 
   private setPost(idPost: number) {
-    if (idPost) {
-      this.post = this.postsService.getById(idPost);
-      this.userName = this.usersService.getName(this.post.userId);
-    }
+    this.post = this.postsService.getById(idPost);
+    this.userName = this.usersService.getName(this.post.userId);
+  }
+
+  private setComments(idPost: number) {
+    this.loader.display();
+    this.postsService.getComments(idPost).subscribe((comments) => {
+      this.comments = comments;
+      this.loader.hide();
+    });
   }
 }

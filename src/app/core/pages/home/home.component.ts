@@ -13,7 +13,6 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 })
 export class HomeComponent implements OnInit {
   Labels = Labels;
-  faEdit = faEdit;
 
   posts: Post[] = [];
   postsView: Post[] = [];
@@ -55,13 +54,5 @@ export class HomeComponent implements OnInit {
 
   openCreateModal() {
     this.router.navigate([{ outlets: { post: ['create'] } }]);
-  }
-
-  openDetailsModal(postId: number) {
-    this.router.navigate([{ outlets: { post: ['details', postId] } }]);
-  }
-
-  openEditModal(postId: number) {
-    this.router.navigate([{ outlets: { post: ['edit', postId] } }]);
   }
 }

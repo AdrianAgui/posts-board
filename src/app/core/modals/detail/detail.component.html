@@ -21,6 +21,23 @@
       </span>
     </div>
   </div>
+
+  <div class="details-modal__container-comments">
+
+    <div class="commentary" *ngFor="let comment of comments">
+
+      <div class="commentary__avatar">
+        <fa-icon [icon]="faUser"></fa-icon>
+      </div>
+
+      <div class="commentary__box">
+        <p class="commentary__box-email">{{ comment.email }}</p>
+        <p class="commentary__box-text">{{ comment.body }}</p>
+      </div>
+
+    </div>
+
+  </div>
 </div>
 
 <div class="backdrop"></div>

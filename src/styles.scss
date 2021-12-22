@@ -25,7 +25,7 @@ body {
   left: 50%;
   top: 50%;
   z-index: 1;
-  transform: translate(-50%, -75%);
+  transform: translate(-50%, -50%);
 
   @media screen and (max-width: 768px) {
     width: 100%;
@@ -40,7 +40,18 @@ body {
 
   .closebar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+      margin: 0 0 0 2.5rem;
+    }
+
+    span {
+      font-size: 28px;
+      font-weight: bold;
+      font-family: Caveat, Roboto;
+    }
 
     .close {
       font-size: 20px;
