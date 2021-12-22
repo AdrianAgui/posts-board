@@ -1,4 +1,8 @@
 .details-modal {
+  .closebar {
+    justify-content: flex-end;
+  }
+
   &__container-data {
     @media screen and (max-width: 768px) {
       padding: 0 3rem;

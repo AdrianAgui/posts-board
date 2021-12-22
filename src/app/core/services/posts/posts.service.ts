@@ -3,7 +3,9 @@ import { ApiService } from '../api-service/api.service';
 import { map, Observable, of, Subject, tap } from 'rxjs';
 import { Post } from '../../interfaces/post.interface';
 
-const getPostsEndpoint = 'https://jsonplaceholder.typicode.com/posts';
+const getEndpoint = 'https://jsonplaceholder.typicode.com/posts';
+const putEndpoint = (postId: number) =>
+  `https://jsonplaceholder.typicode.com/posts/${postId}`;
 const getCommentsEndpoint = 'https://jsonplaceholder.typicode.com/comments';
 
 @Injectable({
@@ -23,10 +25,15 @@ export class PostsService {
   }
 
   create(post: Post) {
-    return this.apiService.post<Post>(
-      getPostsEndpoint,
-      post
-    ) as Observable<Post>;
+    return this.apiService.post<Post>(getEndpoint, post) as Observable<Post>;
+  }
+
+  update(post: Post) {
+    console.log(post);
+    return this.apiService.put<Post>(putEndpoint(post.id), {
+      title: post.title,
+      body: post.body,
+    }) as Observable<Post>;
   }
 
   getComments() {
@@ -42,6 +49,6 @@ export class PostsService {
   }
 
   private getFromApi() {
-    return this.apiService.get<Post[]>(getPostsEndpoint) as Observable<Post[]>;
+    return this.apiService.get<Post[]>(getEndpoint) as Observable<Post[]>;
   }
 }

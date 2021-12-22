@@ -1,5 +1,6 @@
 <div class="app-modal create-modal">
   <div class="closebar">
+    <span>Create Post</span>
     <button (click)="close()" class="close">✖</button>
   </div>
 
@@ -25,7 +26,7 @@
             Body must be at least 6 characters
           </div>
           <div *ngIf="f['body'].errors['maxlength']">
-            Username must not exceed 256 characters
+            Body must not exceed 256 characters
           </div>
         </div>
       </div>

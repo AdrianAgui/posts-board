@@ -18,7 +18,6 @@
     <div class="posts__container">
 
       <div class="posts__card" *ngFor="let post of postsView">
-
         <div class="posts__card--content" (click)="openDetailsModal(post.id)">
           <div class="posts__card--content-title">{{post.title}}</div>
           <span class="posts__card--content-body">{{post.body}}</span>
@@ -29,8 +28,9 @@
             <fa-icon [icon]="faEdit"></fa-icon>
           </button>
         </div>
-
       </div>
+
+
 
     </div>
   </div>

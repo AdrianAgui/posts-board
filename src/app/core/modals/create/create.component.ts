@@ -12,7 +12,6 @@ import {
 } from '@angular/forms';
 import { faBroom } from '@fortawesome/free-solid-svg-icons';
 import { LoaderService } from './../../services/loader/loader.service';
-import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-create',
@@ -23,12 +22,8 @@ export class CreateComponent {
   faBroom = faBroom;
 
   form: FormGroup = new FormGroup({
-    fullname: new FormControl(''),
-    username: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl(''),
-    acceptTerms: new FormControl(false),
+    title: new FormControl(''),
+    body: new FormControl(''),
   });
 
   submitted = false;
@@ -89,7 +84,7 @@ export class CreateComponent {
         [
           Validators.required,
           Validators.minLength(4),
-          Validators.maxLength(48),
+          Validators.maxLength(256),
         ],
       ],
       body: [
