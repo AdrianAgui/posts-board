@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { faBroom } from '@fortawesome/free-solid-svg-icons';
+import { Labels } from '../../enum/labels';
 import { Post } from '../../interfaces/post.interface';
 import { BackdropService } from '../../services/backdrop/backdrop.service';
 import { LoaderService } from '../../services/loader/loader.service';
@@ -22,6 +23,7 @@ export class EditComponent implements OnInit {
   faBroom = faBroom;
   submitted = false;
   postId: number;
+  Labels = Labels;
 
   form: FormGroup = new FormGroup({
     title: new FormControl(''),

@@ -1,6 +1,6 @@
 <div class="app-modal edit-modal">
   <div class="closebar">
-    <span>Edit Post {{ postId }}</span>
+    <span>{{ Labels.editPost }}</span>
     <button (click)="close()" class="close">✖</button>
   </div>
 
@@ -8,25 +8,32 @@
     <form [formGroup]="form" (ngSubmit)="updatePost()">
 
       <div class="mb-3">
-        <label for="title" class="form-label"><b>Title: *</b></label>
+        <label for="title" class="form-label"><b>{{ Labels.title }}: *</b></label>
         <input type="text" formControlName="title" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f['title'].errors , 'ng-started' : f['title'].value === '' }" />
         <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
-          <div *ngIf="f['title'].errors['required']">Title is required</div>
+          <div *ngIf="f['title'].errors['required']">{{ Labels.titleVal_required }}</div>
+          <div *ngIf="f['title'].errors['minlength']">
+            {{ Labels.titleVal_minLength }}
+          </div>
+          <div *ngIf="f['title'].errors['maxlength']">
+            {{ Labels.titleVal_maxLength }}
+          </div>
         </div>
+
       </div>
 
       <div class="mb-3">
-        <label for="body" class="form-label"><b>Body: *</b></label>
+        <label for="body" class="form-label"><b>{{ Labels.body }}: *</b></label>
         <textarea type="text" formControlName="body" class="form-control" rows="4"
-          [ngClass]="{ 'is-invalid': submitted && f['body'].errors , 'ng-started' : !f['body'].value }"></textarea>
+          [ngClass]="{ 'is-invalid': submitted && f['body'].errors , 'ng-started' : f['body'].value === '' }"></textarea>
         <div *ngIf="submitted && f['body'].errors" class="invalid-feedback">
-          <div *ngIf="f['body'].errors['required']">Body is required</div>
+          <div *ngIf="f['body'].errors['required']">{{ Labels.bodyVal_required }}</div>
           <div *ngIf="f['body'].errors['minlength']">
-            Body must be at least 6 characters
+            {{ Labels.bodyVal_minLength }}
           </div>
           <div *ngIf="f['body'].errors['maxlength']">
-            Body must not exceed 256 characters
+            {{ Labels.bodyVal_maxLength }}
           </div>
         </div>
       </div>
@@ -35,7 +42,7 @@
         <button type="button" (click)="reset()" class="clean accept">
           <fa-icon [icon]="faBroom"></fa-icon>
         </button>
-        <button type="submit" class="submit accept">Post it!</button>
+        <button type="submit" class="submit accept">{{ Labels.editIt }}</button>
       </div>
 
     </form>

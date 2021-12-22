@@ -2,12 +2,12 @@
 
   <div class="searcher__bar">
     <div (click)="openCreateModal()" class="posts__create">
-      <app-button [text]="Labels.Create"></app-button>
+      <app-button [text]="Labels.create"></app-button>
     </div>
 
     <div class="posts__searcher">
       <div class="posts__count">
-        <h2>Posts: {{ postsView.length }}</h2>
+        <h2>{{ Labels.posts }}: {{ postsView.length }}</h2>
       </div>
 
       <app-searcher (onFilterChange)="filterChange($event)"></app-searcher>

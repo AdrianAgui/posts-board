@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Labels } from '../../enum/labels';
 
 @Component({
   selector: 'app-searcher',
@@ -8,6 +9,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class SearcherComponent implements OnInit {
   faSearch = faSearch;
+  Labels = Labels;
 
   inputHasText = false;
 

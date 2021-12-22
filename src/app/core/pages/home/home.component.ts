@@ -4,7 +4,6 @@ import { Post } from '../../interfaces/post.interface';
 import { PostsService } from '../../services/posts/posts.service';
 import { Router } from '@angular/router';
 import { UsersService } from '../../services/users/users.service';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',

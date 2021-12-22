@@ -6,6 +6,7 @@ import { UsersService } from '../../services/users/users.service';
 import { PostsService } from './../../services/posts/posts.service';
 import { LoaderService } from './../../services/loader/loader.service';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { Labels } from '../../enum/labels';
 
 @Component({
   selector: 'app-detail',
@@ -17,6 +18,7 @@ export class DetailComponent implements OnInit {
   userName: string;
   postId: number;
   comments: any;
+  Labels = Labels;
 
   faUser = faUser;
 
