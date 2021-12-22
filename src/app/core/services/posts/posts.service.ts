@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { ApiService } from '../api-service/api.service';
 import { map, Observable, of, Subject, tap } from 'rxjs';
 import { Post } from '../../interfaces/post.interface';
+import { Commentary } from '../../interfaces/comentary.interface';
 
 const getEndpoint = 'https://jsonplaceholder.typicode.com/posts';
 const putEndpoint = (postId: number) =>
   `https://jsonplaceholder.typicode.com/posts/${postId}`;
-const getCommentsEndpoint = 'https://jsonplaceholder.typicode.com/comments';
+const getCommentsEndpoint = (postId: number) =>
+  `https://jsonplaceholder.typicode.com/posts/${postId}/comments`;
 
 @Injectable({
   providedIn: 'root',
@@ -36,8 +38,10 @@ export class PostsService {
     }) as Observable<Post>;
   }
 
-  getComments() {
-    return this.apiService.get<any[]>(getCommentsEndpoint) as Observable<any[]>;
+  getComments(postId: number) {
+    return this.apiService.get<Commentary[]>(
+      getCommentsEndpoint(postId)
+    ) as Observable<Commentary[]>;
   }
 
   getById(id: number): Post {
