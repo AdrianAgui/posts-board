@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Post } from '../../interfaces/post.interface';
 import { BackdropService } from '../../services/backdrop/backdrop.service';
 import { UsersService } from '../../services/users/users.service';
@@ -36,7 +36,8 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe((params: Params) => {
+      console.log(params);
       this.postId = +params['postId'];
       if (this.postId) {
         this.setPost(this.postId);

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api-service/api.service';
-import { map, Observable, of, Subject, tap } from 'rxjs';
+import { map, Observable, of, Subject } from 'rxjs';
 import { Post } from '../../interfaces/post.interface';
 import { Commentary } from '../../interfaces/comentary.interface';
 
