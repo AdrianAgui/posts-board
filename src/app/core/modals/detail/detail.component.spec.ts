@@ -1,4 +1,4 @@
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DetailComponent } from './detail.component';
 import { of, Subject } from 'rxjs';
@@ -56,12 +56,16 @@ describe('DetailComponent', () => {
   });
 
   describe('Init component', () => {
-    // it('should receive post id', () => {
-    //   const postId = 1;
-    //   comp.ngOnInit();
-    //   activatedRouteSpy.params.next({ postId: postId } as Params);
-    //   expect(comp.postId).toEqual(postId);
-    // });
+    it('should receive post id', (done: DoneFn) => {
+      const postId = 1;
+      comp.ngOnInit();
+
+      setTimeout(() => {
+        activatedRouteSpy.params.next({ postId: postId } as Params);
+        expect(comp.postId).toEqual(postId);
+        done();
+      }, 500);
+    });
   });
 
   describe('Close modal', () => {
