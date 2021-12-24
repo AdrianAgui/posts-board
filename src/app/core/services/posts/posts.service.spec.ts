@@ -21,7 +21,7 @@ describe('PostsService', () => {
       providers: [PostsService, { provide: ApiService, useValue: spy }],
     });
 
-    postsService = TestBed.inject(PostsService);
+    postsService = TestBed.inject(PostsService) as jasmine.SpyObj<PostsService>;
     apiServiceSpy = TestBed.inject(ApiService) as jasmine.SpyObj<ApiService>;
 
     postsService.list = [
