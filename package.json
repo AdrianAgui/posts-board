@@ -12,7 +12,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --base-href ./ && git add . && git commit -m 'deploy' && git push --all"
+    "deploy": "ng build --base-href ./ && git add . && git commit -m 'deploy' && git push --all",
+    "docker:build": "docker build -t posts-board:latest .",
+    "docker:run": "docker run -d -p 80:80 posts-board:latest"
   },
   "private": true,
   "dependencies": {
