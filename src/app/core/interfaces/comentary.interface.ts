@@ -1,1 +1,7 @@
-export interface Commentary {}
+export interface Commentary {
+  id: number;
+  postId: number;
+  name: string;
+  body: string;
+  email: string;
+}

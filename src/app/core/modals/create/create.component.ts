@@ -12,6 +12,7 @@ import {
 } from '@angular/forms';
 import { faBroom } from '@fortawesome/free-solid-svg-icons';
 import { LoaderService } from './../../services/loader/loader.service';
+import { Labels } from '../../enum/labels';
 
 @Component({
   selector: 'app-create',
@@ -20,6 +21,7 @@ import { LoaderService } from './../../services/loader/loader.service';
 })
 export class CreateComponent {
   faBroom = faBroom;
+  Labels = Labels;
 
   form: FormGroup = new FormGroup({
     title: new FormControl(''),

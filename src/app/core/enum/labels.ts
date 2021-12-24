@@ -1,4 +1,18 @@
 export enum Labels {
-  // TODO: Create all app labels
-  Create = 'Create',
+  create = 'Create',
+  createPost = 'Create Post',
+  posts = 'Posts',
+  searchPlaceholder = 'Enter text or user to search:',
+  title = 'Title',
+  titleVal_required = 'Title is required',
+  titleVal_minLength = 'Title must be at least 6 characters',
+  titleVal_maxLength = 'Title must not exceed 256 characters',
+  body = 'Body',
+  bodyVal_required = 'Body is required',
+  bodyVal_minLength = 'Body must be at least 6 characters',
+  bodyVal_maxLength = 'Body must not exceed 256 characters',
+  postIt = 'Post It!',
+  postedBy = 'posted by',
+  editPost = 'Edit Post',
+  editIt = 'Save changes',
 }

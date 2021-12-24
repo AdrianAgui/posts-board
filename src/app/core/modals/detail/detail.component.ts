@@ -1,11 +1,12 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Post } from '../../interfaces/post.interface';
 import { BackdropService } from '../../services/backdrop/backdrop.service';
 import { UsersService } from '../../services/users/users.service';
 import { PostsService } from './../../services/posts/posts.service';
 import { LoaderService } from './../../services/loader/loader.service';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { Labels } from '../../enum/labels';
 
 @Component({
   selector: 'app-detail',
@@ -17,6 +18,7 @@ export class DetailComponent implements OnInit {
   userName: string;
   postId: number;
   comments: any;
+  Labels = Labels;
 
   faUser = faUser;
 
@@ -34,7 +36,7 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe((params: Params) => {
       this.postId = +params['postId'];
       if (this.postId) {
         this.setPost(this.postId);

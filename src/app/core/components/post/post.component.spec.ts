@@ -1,25 +1,39 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PostComponent } from './post.component';
+import { Router } from '@angular/router';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('PostComponent', () => {
-  let component: PostComponent;
+  let comp: PostComponent;
   let fixture: ComponentFixture<PostComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ PostComponent ]
-    })
-    .compileComponents();
-  });
+  let routerSpy = jasmine.createSpyObj({ navigate: () => {} });
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [FontAwesomeModule],
+      declarations: [PostComponent],
+      providers: [PostComponent, { provide: Router, useValue: routerSpy }],
+    });
+
     fixture = TestBed.createComponent(PostComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    comp = fixture.componentInstance;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should be created', () => {
+    expect(comp).toBeDefined();
+  });
+
+  describe('Open detail modal', () => {
+    it('should navigate to router outlet modal', () => {
+      comp.openDetailsModal(1);
+      expect(routerSpy.navigate).toHaveBeenCalled();
+    });
+  });
+
+  describe('Open edit modal', () => {
+    it('should navigate to router outlet modal', () => {
+      comp.openEditModal(1);
+      expect(routerSpy.navigate).toHaveBeenCalled();
+    });
   });
 });

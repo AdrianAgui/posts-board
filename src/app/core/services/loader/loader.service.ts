@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoaderService {
-  show: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  show: Subject<boolean> = new Subject<boolean>();
 
   display() {
     this.show.next(true);
