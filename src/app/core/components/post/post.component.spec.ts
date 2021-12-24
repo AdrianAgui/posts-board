@@ -1,6 +1,7 @@
 import { PostComponent } from './post.component';
 import { Router } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('PostComponent', () => {
   let comp: PostComponent;
@@ -9,6 +10,7 @@ describe('PostComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [FontAwesomeModule],
       declarations: [PostComponent],
       providers: [PostComponent, { provide: Router, useValue: routerSpy }],
     });

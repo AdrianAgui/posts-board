@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SearcherComponent } from './searcher.component';
 
@@ -8,9 +9,9 @@ describe('SearcherComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearcherComponent ]
-    })
-    .compileComponents();
+      imports: [FontAwesomeModule],
+      declarations: [SearcherComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -37,7 +37,6 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      console.log(params);
       this.postId = +params['postId'];
       if (this.postId) {
         this.setPost(this.postId);
